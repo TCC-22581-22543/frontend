@@ -1,17 +1,24 @@
-import React from 'react'
+import React from 'react';
 import { Text, View } from 'react-native';
-import { Container, Content, Title, TextField, Subtitle, Fields, ButtonsField } from './styles';
-import { Input } from '@assets/Input'
+import { Container, Content, Title, TextField, Subtitle, Fields, ButtonsField, TitleView, GoogleAuthenticateButton } from './styles';
+import { Input } from '@assets/Input';
 import { CustomButton } from '@assets/Button';
+import { InconPrincipal } from '@assets/IconFiles';
+import { GoogleIcon } from '@assets/IconFiles/googleIcon';
+
 
 export function Login(){
     return(
         <Container>
             <Content>
                 <View>
-                    <Title>
-                        Acesse 
-                    </Title>
+                    <TitleView>
+                        <Title>
+                            Acesse
+                        </Title>
+                        <InconPrincipal/>
+                    </TitleView>
+                    
                     <Subtitle>Com email e senha para entrar</Subtitle>
                 </View>
                 <Fields>
@@ -39,8 +46,10 @@ export function Login(){
                             fontSize={20}
                         />
                     </View>
-                  
-                    
+                    <GoogleAuthenticateButton>
+                        <Text style={{fontSize: 20}}>Entrar com Google</Text>
+                        <GoogleIcon/>
+                    </GoogleAuthenticateButton>
                 </Fields>
             </Content>
         </Container>

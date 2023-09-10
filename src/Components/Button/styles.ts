@@ -1,10 +1,9 @@
 import { TouchableOpacityProps } from 'react-native';
 import styled from 'styled-components/native';
 
-
 interface ButtonProps extends TouchableOpacityProps {
-    backgroundColor?: string;
-    textColor?: string;
+  backgroundColor?: string;
+  textColor?: string;
 }
 
 export const ButtonContainer = styled.TouchableOpacity<ButtonProps>`

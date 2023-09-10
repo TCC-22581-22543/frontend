@@ -4,7 +4,6 @@ export const Container = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
-    border: 2px solid blue;
 `;
 
 export const Content = styled.View`
@@ -14,9 +13,15 @@ export const Content = styled.View`
 `;
 
 export const Title = styled.Text`
-    font-size: 28px;
+    font-size: 30px;
     color: #202869;
     font-family: ${({theme}) => theme.fonts.bold}; 
+`;
+
+export const TitleView = styled.View`
+    flex-direction: row; 
+    justify-content: space-between;
+    width: 58%;
 `;
 
 export const Subtitle = styled.Text`
@@ -40,4 +45,15 @@ export const ButtonsField = styled.View`
     align-items: center;
     justify-content: center;
     height: 30%;
+`;
+
+export const GoogleAuthenticateButton = styled.TouchableOpacity`
+    border: 1px solid gray;
+    border-radius: 6px;
+    width: 300px; 
+    height: 60px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin-top: 20px;
 `;

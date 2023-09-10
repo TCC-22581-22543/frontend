@@ -1,5 +1,5 @@
 import { Login } from '@Screens/Login'; // fazer importação de telas dessa maneria "@Pasta/arquivo"
-import theme from './src/global/theme';
+import theme from './src/global/styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { Text } from 'react-native';
 
