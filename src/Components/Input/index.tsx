@@ -6,10 +6,11 @@ interface InputProps {
     height?: number;
     placeholder?: string;
     value?: string;
+    mask?: boolean
     onChangeText?: (text: string) => void;
 }
 
-export function Input({ width, height, placeholder, value, onChangeText, ...rest}: InputProps) {
+export function Input({ width, height, placeholder, value, mask, onChangeText, ...rest}: InputProps) {
     return (
         <StyledInput
         width={width}
@@ -17,6 +18,7 @@ export function Input({ width, height, placeholder, value, onChangeText, ...rest
         placeholder={placeholder}
         value={value}
         onChangeText={onChangeText}
+        secureTextEntry={mask}
         {...rest}
         />
     );

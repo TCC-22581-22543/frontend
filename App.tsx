@@ -10,21 +10,23 @@ import {
   Poppins_700Bold
 } from '@expo-google-fonts/poppins';
 
+import Register from '@Screens/Register';
+
 export default function App() {
 
-  const [fontsLoaded] = useFonts({
+  let [fontsLoaded, fontError] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
     Poppins_700Bold
   });
 
-  if(!fontsLoaded){
-    return <Text>Carregando...</Text>
+  if (!fontsLoaded && !fontError) {
+    return null;
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <Login/>
+      <Register/>
     </ThemeProvider> 
   )
 }

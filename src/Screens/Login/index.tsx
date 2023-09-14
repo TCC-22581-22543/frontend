@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Container, Content, Title, TextField, Subtitle, Fields, ButtonsField, TitleView, GoogleAuthenticateButton } from './styles';
+import { Container, Content, Title, TextField, Subtitle, Fields, TitleView, GoogleAuthenticateButton } from './styles';
 import { Input } from '@assets/Input';
 import { CustomButton } from '@assets/Button';
 import { InconPrincipal } from '@assets/IconFiles';
@@ -33,7 +33,7 @@ export function Login(){
                         <Input width={320} height={55} placeholder='Senha'/>
                     </View>
                     
-                    <View style={{marginTop: 70}}>
+                    <View style={{marginTop: 70, alignItems: 'center'}}>
                         <CustomButton
                         style={{marginBottom: 20, width: 300, height: 60}}
                             title={'Login'}

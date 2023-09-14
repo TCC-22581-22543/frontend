@@ -39,14 +39,6 @@ export const TextField = styled.Text`
     font-size: 18px; 
 `;
 
-export const ButtonsField = styled.View`
-    border: 2px solid red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 30%;
-`;
-
 export const GoogleAuthenticateButton = styled.TouchableOpacity`
     border: 1px solid gray;
     border-radius: 6px;
@@ -56,4 +48,5 @@ export const GoogleAuthenticateButton = styled.TouchableOpacity`
     align-items: center;
     flex-direction: row-reverse;
     margin-top: 20px;
+    align-self: center;
 `;

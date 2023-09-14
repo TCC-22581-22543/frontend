@@ -11,8 +11,8 @@ interface ButtonProps extends TouchableOpacityProps {
 
 export function CustomButton({ title, backgroundColor, fontSize, textColor = 'white', ...rest}: ButtonProps) {
   return (
-    <ButtonContainer backgroundColor={backgroundColor}  {...rest}>
-      <Text style={{color: textColor, fontSize: fontSize}}>{title}</Text>
+    <ButtonContainer backgroundColor={backgroundColor} {...rest}>
+      <Text style={{color: textColor, fontSize: fontSize, fontFamily: 'Poppins_500Medium'}}>{title}</Text>
     </ButtonContainer>
   );
 }

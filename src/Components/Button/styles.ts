@@ -11,5 +11,5 @@ export const ButtonContainer = styled.TouchableOpacity<ButtonProps>`
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-
+  font-family: 'Poppins_700Bold'
 `;

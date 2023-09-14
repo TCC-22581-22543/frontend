@@ -5,6 +5,6 @@ export default{
         bold: 'Poppins_700Bold'
     },
     colors:{
-        blue_buttons: '#5abec8',
+        blue: '#5abec8',
     }
 }
