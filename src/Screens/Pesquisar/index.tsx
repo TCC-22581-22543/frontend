@@ -9,7 +9,7 @@ export  function Pesquisar(){
     return(
         <Container>
             <Headers>
-                <CustomButton title={"Sair"}
+                <CustomButton title={"Voltar"}
                     backgroundColor={'#OAOAOA'}/>
             </Headers>
             <Content>

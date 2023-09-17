@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { Text } from 'react-native';
 import { Main } from '@Screens/Main';
 import { Pesquisar } from "@Screens/Pesquisar";
+import { Annotation } from "@Screens/Annotation";
 
 import {
   useFonts,
@@ -28,7 +29,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Main/>
+      <Annotation/>
     </ThemeProvider> 
   )
 }
