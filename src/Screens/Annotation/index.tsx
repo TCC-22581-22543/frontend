@@ -13,10 +13,10 @@ export function Annotation(){
         <Content>
            <ContentText>
                 <Title>Nenhuma Anotação</Title>
-                <Subtitle>Toque no botão Add para criar uma anotação</Subtitle>
+                <Subtitle>Toque no botão Adicionar para criar uma anotação</Subtitle>
             </ContentText>
             <ButtonAdd>
-                    <Text>Add</Text>
+                    <Text style={{fontSize: 36, color: 'white'}}>+</Text>
             </ButtonAdd>
         </Content>
     </Container>
