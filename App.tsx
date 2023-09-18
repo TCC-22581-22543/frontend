@@ -11,6 +11,8 @@ import {
 } from '@expo-google-fonts/poppins';
 
 import Register from '@Screens/Register';
+import UserProfile from '@Screens/UserProfile';
+import AnimalSearchScreen  from '@Screens/AnimalSearchScreen';
 
 export default function App() {
 
@@ -21,12 +23,12 @@ export default function App() {
   });
 
   if (!fontsLoaded && !fontError) {
-    return null;
+    return <Text>Carregando...</Text>;
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <Register/>
+      <UserProfile/>
     </ThemeProvider> 
   )
 }

@@ -1232,7 +1232,7 @@
 
 "@expo-google-fonts/poppins@^0.2.3":
   version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/poppins/-/poppins-0.2.3.tgz#807fc1bf58948c32ddfb9c67f7329ff16cc78d14"
+  resolved "https://registry.npmjs.org/@expo-google-fonts/poppins/-/poppins-0.2.3.tgz"
   integrity sha512-PXkur1ZY/puy1PwVFYPJx8qiI3dtBzC2ig1bo53swCt7/sI7krCGYRO6hLBNp15M0kcNh2J4cCR9ZQyFxsving==
 
 "@expo/bunyan@4.0.0", "@expo/bunyan@^4.0.0":
@@ -2016,7 +2016,22 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
-"@types/react@~18.2.14":
+"@types/react-native-vector-icons@^6.4.14":
+  version "6.4.14"
+  resolved "https://registry.npmjs.org/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.14.tgz"
+  integrity sha512-3RaEadfUUImrDed03hwRnYp5QFevcWkWgPUHxj9U9lB6G5uPEGaxXoLWdjgioQ46CvADXUzrDOEYLSVcAn1GQw==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "^0.70"
+
+"@types/react-native@^0.70":
+  version "0.70.14"
+  resolved "https://registry.npmjs.org/@types/react-native/-/react-native-0.70.14.tgz"
+  integrity sha512-Kwc+BYBrnDqvacNxKp1UtcZJnJJnTih2NYmi/ieAKlHdxEPN6sYMwmIwgHdoLHggvml6bf3DYRaH2jt+gzaLjw==
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@~18.2.14":
   version "18.2.21"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.2.21.tgz"
   integrity sha512-neFKG/sBAwGxHgXiIxnbm3/AAVQ/cMRS93hvBpg8xYRbeQSPVABp9U2bRnPf0iI4+Ucdv3plSxKK+3CW2ENJxA==
@@ -3288,10 +3303,10 @@ expo-asset@~8.10.1:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
-expo-checkbox@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/expo-checkbox/-/expo-checkbox-2.5.0.tgz#2c5a6a6fdfe35dc6ffed17b1558ef89fdfa486f6"
-  integrity sha512-0ilRRQ1c50wY4DEzu5Vg/gyWYOpq2j4Js3m6+zP7Y526G9yL+13fexjPd+7sMSEZhPopGGPp9y82uiIhkfVMKA==
+expo-checkbox@~2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/expo-checkbox/-/expo-checkbox-2.4.0.tgz#5d5bb82117f4d781eb1d4db0ff96e1f0a4a0547a"
+  integrity sha512-ZEe79B73I+NDkLZQ2pR1E5rv9ey1oleNI/s2/Jdb9zKWztS0KVU2K+drFn2t/zyoSbR1U+CNwik2v7h6JxrXcA==
 
 expo-constants@~14.4.2:
   version "14.4.2"
@@ -5526,6 +5541,11 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-native-image-picker@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-7.0.0.tgz"
+  integrity sha512-eiDj0mJUPivranQJX/pwkGf/Ar9QrQ+BF3y0D8frHU3S7U86IGOnOzHN7Wh6ofXEnafRij0TpmRCdrSebBMV+Q==
 
 react-native-svg@13.9.0:
   version "13.9.0"
