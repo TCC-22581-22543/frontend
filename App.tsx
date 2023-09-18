@@ -2,6 +2,9 @@ import { Login } from '@Screens/Login'; // fazer importação de telas dessa man
 import theme from './src/global/styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { Text } from 'react-native';
+import { Main } from '@Screens/Main';
+import { Pesquisar } from "@Screens/Pesquisar";
+import { Annotation } from "@Screens/Annotation";
 
 import {
   useFonts,
@@ -28,7 +31,11 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
+<<<<<<< HEAD
       <UserProfile/>
+=======
+      <Annotation/>
+>>>>>>> 9d282f637e1a987d3d286a360d353d77d0b36d9a
     </ThemeProvider> 
   )
 }

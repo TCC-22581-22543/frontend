@@ -10,9 +10,14 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.3",
+<<<<<<< HEAD
     "@expo/vector-icons": "^13.0.0",
     "expo": "~49.0.7",
     "expo-checkbox": "~2.4.0",
+=======
+    "expo": "^49.0.11",
+    "expo-checkbox": "^2.5.0",
+>>>>>>> 9d282f637e1a987d3d286a360d353d77d0b36d9a
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-native": "0.72.4",
