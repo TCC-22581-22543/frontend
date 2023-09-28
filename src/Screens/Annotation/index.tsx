@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Container, Content, Title, Subtitle, ContentText, ButtonAdd, ContentButton, Headers } from "./styles";
+import { Container, Content, Title, Subtitle, ContentText, ButtonAdd, Headers } from "./styles";
 import { CustomButton } from '@assets/Button';
 
 export function Annotation(){

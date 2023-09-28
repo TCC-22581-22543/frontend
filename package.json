@@ -10,18 +10,18 @@
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.3",
-<<<<<<< HEAD
     "@expo/vector-icons": "^13.0.0",
+    "@react-navigation/native": "^6.1.8",
+    "@react-navigation/native-stack": "^6.9.14",
+    "axios": "^1.5.1",
     "expo": "~49.0.7",
     "expo-checkbox": "~2.4.0",
-=======
-    "expo": "^49.0.11",
-    "expo-checkbox": "^2.5.0",
->>>>>>> 9d282f637e1a987d3d286a360d353d77d0b36d9a
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
-    "react-native": "0.72.4",
+    "react-native": "0.72.5",
     "react-native-image-picker": "^7.0.0",
+    "react-native-safe-area-context": "4.6.3",
+    "react-native-screens": "^3.25.0",
     "react-native-svg": "13.9.0",
     "react-native-vector-icons": "^10.0.0",
     "styled-components": "^6.0.7"

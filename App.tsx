@@ -3,7 +3,6 @@ import theme from './src/global/styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { Text } from 'react-native';
 import { Main } from '@Screens/Main';
-import { Pesquisar } from "@Screens/Pesquisar";
 import { Annotation } from "@Screens/Annotation";
 
 import {
@@ -16,6 +15,7 @@ import {
 import Register from '@Screens/Register';
 import UserProfile from '@Screens/UserProfile';
 import AnimalSearchScreen  from '@Screens/AnimalSearchScreen';
+import Routes from './src/Routes';
 
 export default function App() {
 
@@ -31,11 +31,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-<<<<<<< HEAD
-      <UserProfile/>
-=======
-      <Annotation/>
->>>>>>> 9d282f637e1a987d3d286a360d353d77d0b36d9a
+      <Routes/>
     </ThemeProvider> 
   )
 }

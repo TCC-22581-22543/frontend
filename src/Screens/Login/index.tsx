@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { Container, Content, Title, TextField, Subtitle, Fields, TitleView, GoogleAuthenticateButton } from './styles';
 import { Input } from '@assets/Input';
 import { CustomButton } from '@assets/Button';
 import { InconPrincipal } from '@assets/IconFiles';
 import { GoogleIcon } from '@assets/IconFiles/googleIcon';
+import { authService } from '@utils/api'
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 
+type RootStackParamList = {
+    Main: undefined;
+    Detail: { itemId: number };
+};
 
 export function Login(){
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+    const handleLogin = async () => {
+        try {
+            const response = await authService.authenticate({
+                email: email,
+                password: password,
+            });
+
+            console.log(response.data);
+            
+           navigation.navigate('Main') 
+        } catch (error) {        
+            console.error(error);
+        }
+    };
     return(
         <Container>
             <Content>
@@ -25,12 +50,24 @@ export function Login(){
 
                     <View style={{marginBottom: 50}}>
                         <TextField>Digite seu email</TextField>
-                        <Input width={320} height={55} placeholder='Email'/>
+                        <Input 
+                            width={320} 
+                            height={55} 
+                            placeholder='Email'
+                            onChangeText={(e: string) => setEmail(e)}
+                            
+                        />
                     </View>
 
                     <View>
                         <TextField>Digite sua senha</TextField>
-                        <Input width={320} height={55} placeholder='Senha'/>
+                        <Input 
+                            width={320} 
+                            height={55} 
+                            placeholder='Senha'
+                            mask={true} 
+                            onChangeText={(p: string) => setPassword(p)}
+                        />
                     </View>
                     
                     <View style={{marginTop: 70, alignItems: 'center'}}>
@@ -38,6 +75,7 @@ export function Login(){
                         style={{marginBottom: 20, width: 300, height: 60}}
                             title={'Login'}
                             fontSize={20}
+                            onPress={handleLogin}
                         />
 
                         <CustomButton

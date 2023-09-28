@@ -1,11 +1,10 @@
 import React from 'react';
-import { Text, View, Button, TouchableOpacity } from 'react-native';
+import { Text, View, Button } from 'react-native';
 import { Container, Content, Headers,ContentMenu, ButtonMenu, Title, TitleButton, Subtitle, Description} from './styles';
 import { InconPrincipal } from '@assets/IconFiles';
 import { CustomButton } from '@assets/Button';
 
-export  function Main(){
-
+export function Main(){
     return(
        
         <Container>

@@ -7,8 +7,8 @@
       "@assets/*":[
         "./src/Components/*"
       ],
-      "@routes/*": [
-        "./src/Routes/*"
+      "@Routes/*": [
+        "src/Routes/*"
       ],
       "@Screens/*": [
         "./src/Screens/*"
@@ -20,8 +20,8 @@
         "./src/Theme/*"
       ],
       "@utils/*": [
-        "./src/Utils/*"
-      ]
+        "src/Utils/*"
+      ],
     }
   }
 }
