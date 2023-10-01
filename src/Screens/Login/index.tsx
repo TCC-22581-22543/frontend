@@ -54,8 +54,7 @@ export function Login(){
                             width={320} 
                             height={55} 
                             placeholder='Email'
-                            onChangeText={(e: string) => setEmail(e)}
-                            
+                            onChangeText={(e: string) => setEmail(e)}                         
                         />
                     </View>
 

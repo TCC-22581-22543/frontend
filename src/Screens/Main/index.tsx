@@ -1,46 +1,62 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
-import { Container, Content, Headers,ContentMenu, ButtonMenu, Title, TitleButton, Subtitle, Description} from './styles';
+import { View, Text } from 'react-native';
+import { Container, Content, Headers, ContentMenu, Title, Description, IconButtonView} from './styles';
 import { InconPrincipal } from '@assets/IconFiles';
-import { CustomButton } from '@assets/Button';
+import { ButtonOptionsMenu } from '@assets/ButtonOptionsMain';
+import { AntDesign } from '@expo/vector-icons';
 
 export function Main(){
     return(
        
         <Container>
             <Headers>
-                  <View style={{ }}>
-                    <InconPrincipal/>
-                  </View>
-                  <View style={{}}>
-                    <CustomButton title={"Sair"}
-                    backgroundColor={'#OAOAOA'}/>
-                  </View>
+                  <IconButtonView> 
+                  <AntDesign name='left' color={'white'} size={26}/>                 
+                    <Text 
+                    style={{
+                        color: 'white', 
+                        fontSize: 20, 
+                        fontFamily: 'Poppins_400Regular'
+                    }
+                    }>Sair
+                    </Text>                  
+                  </IconButtonView>
                </Headers>
+               <View style={{marginLeft: 25}}>
+                    <InconPrincipal/>
+                </View>
             <Content>
-             <Title>Bem Vindo(a), usuário!</Title>
-                <Subtitle>Aqui você já pode começar a navegar pelo simulador e encontrar o que precisa!</Subtitle>
+                <View style={{marginRight: 40, marginBottom: 20}}>
+                    <Title>Bem Vindo(a), usuário!</Title>
+                    <Description>Aqui você já pode começar a navegar pelo simulador e encontrar o que precisa!</Description>
+                </View>
                 <ContentMenu>
-                <ButtonMenu>
-                    <TitleButton>Pesquisar</TitleButton>
-                    <Description>Comece a pesquisar sobre a evolução das espécies</Description>
-                </ButtonMenu>
-                <ButtonMenu>
-                    <TitleButton>Anotações</TitleButton>
-                    <Description>Veja ou anote alguma coisa sobre o que descobriu</Description>
-                </ButtonMenu>
-                </ContentMenu>
-                <ContentMenu>
-                <ButtonMenu>
-                    <TitleButton>Sua conta</TitleButton>
-                    <Description>Detalhes sobre sua conta</Description>
-                </ButtonMenu>
-                <ButtonMenu>
-                    <TitleButton>Consultas</TitleButton>
-                    <Description>Verifique as ultimas consultas realizadas</Description>
-                </ButtonMenu>
-                </ContentMenu>
-                
+                    <View style={{flexDirection: 'row'}}>
+                        <ButtonOptionsMenu 
+                            title='Pesquisar'
+                            description='Comece a pesquisar sobre as espécies'
+                            icon='search-plus'
+                        />
+                        <ButtonOptionsMenu 
+                            title='Anotações'
+                            description='Veja suas anotações ou crie blocos de texto'
+                            icon='book'
+                        />
+                    </View>
+
+                    <View style={{flexDirection: 'row'}}>
+                        <ButtonOptionsMenu 
+                            title='Sua Conta'
+                            description='Detalhes sobre sua conta'
+                            icon='exclamation'
+                        />
+                        <ButtonOptionsMenu 
+                            title='Próximo a você'
+                            description='Verifique as espécies presentes em sua região'
+                            icon='globe-americas'
+                        />
+                    </View>
+                </ContentMenu>               
             </Content>
         </Container>
     );

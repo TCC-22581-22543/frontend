@@ -11,54 +11,35 @@ export const Content = styled.View`
     margin: 30px; 
     align-items: center;
 `;
+
 export const ContentMenu = styled.View`
-    flex: 1;
-    flex-direction: row;
-    margin: 80px;
-    margin-bottom: 10px;
-    align-items: center; 
+    width: 112%;
+    height: 90%;
 `;
+
 export const Headers = styled.View`
     flex-direction: row;
     justify-content: space-between;
-    margin: 50px; 
-`;
-
-export const ButtonMenu = styled.TouchableOpacity`
-    width: 100%;
-    height: 90%;
-    justify-content: center;
-    margin: 5%;
-    align-items: center;
-    background-color: #98FFE6;
-    border-radius: 5px;
-    
+    margin: 30px; 
 `;
 
 export const Title = styled.Text`
     color: white;
     font-size: 20px;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins_700Bold';
-`;
-export const TitleButton = styled.Text`
-    font-size: 14px;
-    justify-content: center;
-    align-items: center;
     font-family: 'Poppins_700Bold';
 `;
 
-export const Subtitle = styled.Text`
-    color: white;
-    font-size: 14px;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins_700Bold';
-`;
 export const Description = styled.Text`
-    font-size: 10px;
+    color: white;
+    font-size: 12px;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins_400Regular';
+    font-family: 'Poppins_500Medium';
 `;
+
+export const IconButtonView = styled.View`
+    width: 20%;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
