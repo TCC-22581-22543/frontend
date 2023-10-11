@@ -12,10 +12,8 @@ import {
   Poppins_700Bold
 } from '@expo-google-fonts/poppins';
 
-import Register from '@Screens/Register';
-import UserProfile from '@Screens/UserProfile';
-import AnimalSearchScreen  from '@Screens/AnimalSearchScreen';
 import Routes from './src/Routes';
+import { AuthProvider } from './src/Hooks/auth';
 
 export default function App() {
 
@@ -31,7 +29,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Main/>
+      <AuthProvider>       
+        <Routes />      
+      </AuthProvider>   
     </ThemeProvider> 
   )
 }

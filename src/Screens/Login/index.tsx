@@ -7,6 +7,7 @@ import { InconPrincipal } from '@assets/IconFiles';
 import { GoogleIcon } from '@assets/IconFiles/googleIcon';
 import { authService } from '@utils/api'
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { useAuth } from '../../Hooks/auth';
 
 type RootStackParamList = {
     Main: undefined;
@@ -19,6 +20,8 @@ export function Login(){
 
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
+    const { signIn } = useAuth();
+
     const handleLogin = async () => {
         try {
             const response = await authService.authenticate({
@@ -27,8 +30,8 @@ export function Login(){
             });
 
             console.log(response.data);
-            
-           navigation.navigate('Main') 
+
+           await signIn({ email, password});  
         } catch (error) {        
             console.error(error);
         }
@@ -81,6 +84,7 @@ export function Login(){
                         style={{width: 300, height: 60}}
                             title={'Registro'}
                             fontSize={20}
+                            onPress={() => navigation.navigate('Register')}
                         />
                     </View>
                     <GoogleAuthenticateButton>

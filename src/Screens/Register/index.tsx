@@ -1,16 +1,67 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Alert, ScrollView, Text, View } from 'react-native';
 import { Container, Content, InputView, GoogleSignUpButton } from './styles';
 import { Input } from '@assets/Input';
 import { CustomButton } from '@assets/Button';
 import Checkbox from "expo-checkbox"
 import { GoogleIcon } from '@assets/IconFiles/googleIcon';
+import { useAuth } from '@Hooks/auth';
 
 export default function Register(){
     const [isChecked, setIsChecked] = useState(false);
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [checkPassword, setCheckPassword] = useState('');
+    const [perfil, setPerfil] = useState('')
+    const [passwordError, setPasswordError] = useState<string | any>(null);
+    const [error, setError] = useState<boolean>(false);
+    const [fieldsError, setFieldsError] = useState<boolean>(false);
+
+    const { register } = useAuth();
+
+    useEffect(() => {
+        if(!name || !email || !password || !perfil || isChecked == true){
+            setFieldsError(true);              
+        }else{
+            setFieldsError(false);
+        }
+    }, [name, email, password, perfil])
+
+    function arePasswordsMatching() {
+        return password === checkPassword;
+    }
+
+    const registerUser = async () => { 
+
+        if (!arePasswordsMatching()) {
+            setPasswordError('As senhas não são iguais.');
+            Alert.alert(passwordError);
+            return;
+        } else {
+            setPasswordError(null);
+        }
+
+        try {
+            const request = await register({
+                name, 
+                email, 
+                password,
+                perfil
+            });
+
+            console.log(request);
+
+        } catch (error) {
+            console.log(error);
+            setError(true);
+        }
+    }
+    
     
     return(
         <Container>
+            <ScrollView>
             <Content>
                 <View style={{marginVertical: 32}}>
                     <Text style={{fontSize: 18 , marginVertical: 2, fontFamily: 'Poppins_700Bold'}}>
@@ -19,13 +70,25 @@ export default function Register(){
 
                     <Text>Aqui você pode realizar o seu cadastro</Text>
                 </View> 
+
+                <InputView>
+                    <Text>Nome</Text>
+                    <Input
+                        height={46}
+                        width={320}
+                        onChangeText={setName}
+                    />
+                    
+                </InputView>
                 
                 <InputView>
                     <Text>Email</Text>
                     <Input
                         height={46}
                         width={320}
+                        onChangeText={setEmail}
                     />
+                    
                 </InputView>
 
                 <InputView>
@@ -34,7 +97,9 @@ export default function Register(){
                         height={46}
                         width={320}
                         mask={true}
+                        onChangeText={setPassword}
                     />
+                    
                 </InputView>
                 
                 <InputView>
@@ -43,15 +108,21 @@ export default function Register(){
                         height={40}
                         width={320}
                         mask={true}
+                        onChangeText={(c) => setCheckPassword(c)}
                     />
                 </InputView>
+
                 <InputView>
                     <Text>Perfil</Text>
                     <Input
                         height={40}
-                        width={320}                     
+                        width={320}
+                        onChangeText={setPerfil}                   
                     />
+                    <Text>(ex: Estudante, Desenvolvedor, ETC)</Text>
                 </InputView>
+
+                
 
                 <View style={{
                     flexDirection: 'row',
@@ -69,7 +140,8 @@ export default function Register(){
 
                 <CustomButton 
                     title='Registrar'
-                    fontSize={22} 
+                    fontSize={22}
+                    disabled={fieldsError ? true : false} 
                     style={{
                         width: '90%',
                         height: 60,
@@ -78,6 +150,7 @@ export default function Register(){
                         borderRadius: 16,
                         alignSelf: 'center',
                     }}
+                    onPress={registerUser}
                 />
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 20 }}>
                     <View
@@ -104,6 +177,7 @@ export default function Register(){
                     <GoogleIcon/>
                 </GoogleSignUpButton>
             </Content>
+            </ScrollView>
         </Container>     
     )
 }

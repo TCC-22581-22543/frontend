@@ -6,7 +6,13 @@ const api = axios.create({
 export const authService = {
     async authenticate(data: any) {
         return await api.post(`/login`, data);       
-    },   
+    }, 
+    
+    async signUp(data: any) {
+        return await api.post(`/register`, data);       
+    },  
 }
+
+
 
 export default api;

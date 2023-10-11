@@ -1,12 +1,21 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { PublicRoutes } from './app.routes';
+import { PrivateRoutes, PublicRoutes } from './app.routes';
+import { useAuth } from '../Hooks/auth'; 
+
 
 const Routes: React.FC = () => {
-   
+  
+  const { user, loading } = useAuth();
+  
+  if(loading){ 
+    return <Text>Carregando...</Text>
+  }
+
   return (
     <NavigationContainer>
-      <PublicRoutes /> 
+      {user ?  <PrivateRoutes /> : <PublicRoutes /> }
     </NavigationContainer>
   );
 };
