@@ -6,6 +6,7 @@ import { CustomButton } from '@assets/Button';
 import Checkbox from "expo-checkbox"
 import { GoogleIcon } from '@assets/IconFiles/googleIcon';
 import { useAuth } from '@Hooks/auth';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Register(){
     const [isChecked, setIsChecked] = useState(false);
@@ -19,9 +20,10 @@ export default function Register(){
     const [fieldsError, setFieldsError] = useState<boolean>(false);
 
     const { register } = useAuth();
+    const navigation = useNavigation();
 
     useEffect(() => {
-        if(!name || !email || !password || !perfil || isChecked == true){
+        if(!name || !email || !password || !perfil || isChecked){
             setFieldsError(true);              
         }else{
             setFieldsError(false);
@@ -43,6 +45,8 @@ export default function Register(){
         }
 
         try {
+           //todo: criar modal que aparecerá na Main após o registro
+
             const request = await register({
                 name, 
                 email, 

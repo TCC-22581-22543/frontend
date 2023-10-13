@@ -84,7 +84,7 @@ export function Login(){
                         style={{width: 300, height: 60}}
                             title={'Registro'}
                             fontSize={20}
-                            onPress={() => navigation.navigate('Register')}
+                            onPress={() => navigation.navigate('Register' as any)}
                         />
                     </View>
                     <GoogleAuthenticateButton>

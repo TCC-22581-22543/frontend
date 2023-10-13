@@ -4,6 +4,7 @@ import { Login } from '@Screens/Login';
 import { Main } from '@Screens/Main';
 import UserProfile from '@Screens/UserProfile';
 import Register from '@Screens/Register';
+import SuccessScreen from '@Screens/SuccessScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ export const PublicRoutes: React.FC = () => (
   >
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Register" component={Register} />
+    <Stack.Screen name="SuccessScreen" component={SuccessScreen}/>
   </Stack.Navigator>
 );
 

@@ -9,7 +9,9 @@ export const authService = {
     }, 
     
     async signUp(data: any) {
-        return await api.post(`/register`, data);       
+        return await api.post(`/register`, data ,{
+            headers: { 'Content-Type': 'application/json' }
+        });       
     },  
 }
 

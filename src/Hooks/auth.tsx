@@ -97,13 +97,11 @@ function AuthProvider({children} : AuthProviderProps){
       
           return user;
         } catch (error) {
-          console.error(error.response.data);
+          console.error(error);
           throw error;
         }
-      }
-      
-      
-
+    }
+          
     useEffect(() => {
         async function loadStoragedData(): Promise<void> {
             try {

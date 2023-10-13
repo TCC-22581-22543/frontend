@@ -1,16 +1,22 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Touchable, TouchableOpacity } from 'react-native';
 import { Container, Content, Headers, ContentMenu, Title, Description, IconButtonView} from './styles';
 import { InconPrincipal } from '@assets/IconFiles';
 import { ButtonOptionsMenu } from '@assets/ButtonOptionsMain';
 import { AntDesign } from '@expo/vector-icons';
+import { useAuth } from '@Hooks/auth';
 
 export function Main(){
+
+    const { signOut } = useAuth();
+
     return(
        
         <Container>
             <Headers>
-                  <IconButtonView> 
+                
+                  <IconButtonView>
+                  <TouchableOpacity onPress={signOut}> 
                   <AntDesign name='left' color={'white'} size={26}/>                 
                     <Text 
                     style={{
@@ -19,7 +25,8 @@ export function Main(){
                         fontFamily: 'Poppins_400Regular'
                     }
                     }>Sair
-                    </Text>                  
+                    </Text> 
+                    </TouchableOpacity>          
                   </IconButtonView>
                </Headers>
                <View style={{marginLeft: 25}}>
