@@ -61,8 +61,7 @@ export default function Register(){
             setError(true);
         }
     }
-    
-    
+       
     return(
         <Container>
             <ScrollView>

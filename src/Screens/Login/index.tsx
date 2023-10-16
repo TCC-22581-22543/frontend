@@ -33,7 +33,7 @@ export function Login(){
 
            await signIn({ email, password});  
         } catch (error) {        
-            console.error(error);
+            console.error("Erro", error);
         }
     };
     return(

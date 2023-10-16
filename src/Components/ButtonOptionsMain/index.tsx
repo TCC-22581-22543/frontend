@@ -5,12 +5,13 @@ interface ButtonProps {
     title: String;
     description: String;
     icon?: any;
+    onPress?: () => void;
 }
 
-export function ButtonOptionsMenu({title, description, icon} : ButtonProps){
+export function ButtonOptionsMenu({title, description, icon, onPress} : ButtonProps){
     return(
         <>      
-            <ButtonMenu>       
+            <ButtonMenu onPress={onPress}>       
                 <FontAwesome5 name={icon} size={45} />
                 <Title>{title}</Title>
                 <Description>{description}</Description>

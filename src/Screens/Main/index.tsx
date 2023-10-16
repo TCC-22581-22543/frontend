@@ -1,22 +1,22 @@
 import React from 'react';
-import { View, Text, Touchable, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
 import { Container, Content, Headers, ContentMenu, Title, Description, IconButtonView} from './styles';
 import { InconPrincipal } from '@assets/IconFiles';
 import { ButtonOptionsMenu } from '@assets/ButtonOptionsMain';
 import { AntDesign } from '@expo/vector-icons';
 import { useAuth } from '@Hooks/auth';
+import { useNavigation } from '@react-navigation/native';
 
 export function Main(){
 
     const { signOut } = useAuth();
+    const navigation = useNavigation();
 
     return(
        
         <Container>
-            <Headers>
-                
-                  <IconButtonView>
-                  <TouchableOpacity onPress={signOut}> 
+            <Headers>                
+                  <IconButtonView onPress={signOut}>
                   <AntDesign name='left' color={'white'} size={26}/>                 
                     <Text 
                     style={{
@@ -25,8 +25,7 @@ export function Main(){
                         fontFamily: 'Poppins_400Regular'
                     }
                     }>Sair
-                    </Text> 
-                    </TouchableOpacity>          
+                    </Text>                           
                   </IconButtonView>
                </Headers>
                <View style={{marginLeft: 25}}>
@@ -43,11 +42,13 @@ export function Main(){
                             title='Pesquisar'
                             description='Comece a pesquisar sobre as espécies'
                             icon='search-plus'
+                            onPress={() => {navigation.navigate('Search' as never)}}
                         />
                         <ButtonOptionsMenu 
                             title='Anotações'
                             description='Veja suas anotações ou crie blocos de texto'
                             icon='book'
+                            onPress={() => {navigation.navigate('Notes' as never)}}
                         />
                     </View>
 
@@ -55,7 +56,8 @@ export function Main(){
                         <ButtonOptionsMenu 
                             title='Sua Conta'
                             description='Detalhes sobre sua conta'
-                            icon='exclamation'
+                            icon='user-alt'
+                            onPress={() => {navigation.navigate('Profile' as never)}}
                         />
                         <ButtonOptionsMenu 
                             title='Próximo a você'

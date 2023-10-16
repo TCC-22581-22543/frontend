@@ -5,6 +5,8 @@ import { Main } from '@Screens/Main';
 import UserProfile from '@Screens/UserProfile';
 import Register from '@Screens/Register';
 import SuccessScreen from '@Screens/SuccessScreen';
+import { Annotation } from '@Screens/Annotation';
+import AnimalSearchScreen from '@Screens/AnimalSearchScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,5 +27,7 @@ export const PrivateRoutes: React.FC = () => (
   >
     <Stack.Screen name="Main" component={Main}/>
     <Stack.Screen name='Profile' component={UserProfile} />
+    <Stack.Screen name='Notes' component={Annotation} />
+    <Stack.Screen name='Search' component={AnimalSearchScreen} />
   </Stack.Navigator>
 );

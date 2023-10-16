@@ -9,6 +9,7 @@ interface AuthProviderProps {
 }
 
 interface User {
+    id: string;
     token: string;
     name: string;
     email: string;
@@ -68,8 +69,10 @@ function AuthProvider({children} : AuthProviderProps){
             ['@TCC:token', auth.token],
             ['@TCC:user', JSON.stringify(auth.user)],
         ]);
+        
 
         setUserData({
+            id: auth.user.id,
             email: auth.user.email, 
             name: auth.user.nome,  
             token: auth.token  
@@ -117,7 +120,7 @@ function AuthProvider({children} : AuthProviderProps){
           
                 if (!token[1] || !user[1]) {
                     setLoading(false);
-                    return signOut();
+                    return;
                 };          
                 
                 let validToken = token[1];
@@ -129,8 +132,7 @@ function AuthProvider({children} : AuthProviderProps){
     
                 if (token && now > expirationDate) {              
                     setLoading(false);
-                    signOut();                           
-                    AsyncStorage.clear();                                    
+                    signOut();                                                             
                     return;
                 }
       
@@ -145,6 +147,7 @@ function AuthProvider({children} : AuthProviderProps){
                   
                 setUserData({
                     token: validToken,
+                    id: userFormatted.id,
                     name: userFormatted.nome,
                     email: userFormatted.email,
                 });

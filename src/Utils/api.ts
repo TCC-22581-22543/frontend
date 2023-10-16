@@ -12,9 +12,11 @@ export const authService = {
         return await api.post(`/register`, data ,{
             headers: { 'Content-Type': 'application/json' }
         });       
-    },  
+    },
+
+    async userInfo(data: any){
+        return await api.get(`/showUser/${data}`);
+    }
 }
-
-
 
 export default api;

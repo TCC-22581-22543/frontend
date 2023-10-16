@@ -37,9 +37,10 @@ export const Description = styled.Text`
     font-family: 'Poppins_500Medium';
 `;
 
-export const IconButtonView = styled.View`
+export const IconButtonView = styled.TouchableOpacity`
     width: 20%;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 80%;
 `;
 

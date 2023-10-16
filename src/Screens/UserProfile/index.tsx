@@ -1,10 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { AccountDetailsText, Container, Content, GoBackView, InfoText, InfoText2, Informations, UserInfo } from './styles';
 import ProfilePhoto from '@assets/ProfilePhoto';
 import { AntDesign } from '@expo/vector-icons';
+import api, { authService } from '@utils/api';
+import { useAuth } from '@Hooks/auth';
+
+interface UserData{
+    id: string;
+    nome: string;
+    perfil: string;
+}
 
 export default function UserProfile(){
+
+    const [userInfos, setUserInfos] = useState<UserData>();
+
+    const { user } = useAuth();
+
+    useEffect(() => {
+        async function fetchUser(){
+            try {
+
+                if (!user || !user.id) {
+                    throw new Error("User ID is not available");
+                }
+                               
+                const response = await authService.userInfo(user.id);
+                
+                const userData = response.data.userFound;
+
+                setUserInfos({
+                    id: userData._id,
+                    nome: userData.nome,
+                    perfil: userData.perfil
+                });
+
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchUser();
+    },[])
+
     return(
         <Container>
             <Content>
@@ -21,7 +60,7 @@ export default function UserProfile(){
                             fontFamily: 'Poppins_700Bold',
                             marginTop: 10,
                             color: '#fff',
-                        }}>Nome do Usuário</Text>
+                        }}>{userInfos?.nome}</Text>
                 </View>
 
                 <View style={{borderColor: 'white', borderWidth: 1}}/>
@@ -45,7 +84,7 @@ export default function UserProfile(){
 
                         <Informations>
                             <InfoText>Perfil de Usuário:</InfoText>
-                            <InfoText2>Estudante</InfoText2>
+                            <InfoText2>{userInfos?.perfil}</InfoText2>
                         </Informations>
 
                         <TouchableOpacity style={{marginTop: 50}}>
