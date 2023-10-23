@@ -50,3 +50,13 @@ export const GoogleAuthenticateButton = styled.TouchableOpacity`
     margin-top: 20px;
     align-self: center;
 `;
+
+export const ErrorMessage = styled.Text`
+    font-family: 'Poppins_700Bold';
+    font-size: 19px;
+    color: red;
+    margin-top: 16px;
+    position: absolute;
+    top: 45%;
+    
+`;

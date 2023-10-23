@@ -3,7 +3,7 @@ import { TouchableOpacityProps, Text } from 'react-native';
 import { ButtonContainer } from './styles';
 
 interface ButtonProps extends TouchableOpacityProps {
-  title: string;
+  title: any;
   backgroundColor?: string;
   textColor?: string;
   fontSize?: number;
@@ -15,7 +15,9 @@ export function CustomButton({ title, backgroundColor, fontSize, textColor = 'wh
   
   return (
     <ButtonContainer backgroundColor={backgroundColor} disabled={isDisabled} {...rest} >
-      <Text style={{color: textColor, fontSize: fontSize, fontFamily: 'Poppins_500Medium'}}>{title}</Text>
+      <Text style={{color: textColor, fontSize: fontSize, fontFamily: 'Poppins_500Medium'}}>
+        {typeof title === 'string' ? <Text>{title}</Text> : title}
+      </Text>
     </ButtonContainer>
   );
 }

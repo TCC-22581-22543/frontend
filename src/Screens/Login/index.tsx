@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Text, View } from 'react-native';
-import { Container, Content, Title, TextField, Subtitle, Fields, TitleView, GoogleAuthenticateButton } from './styles';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Text, View} from 'react-native';
+import { Container, Content, Title, TextField, Subtitle, Fields, TitleView, GoogleAuthenticateButton, ErrorMessage } from './styles';
 import { Input } from '@assets/Input';
 import { CustomButton } from '@assets/Button';
 import { InconPrincipal } from '@assets/IconFiles';
@@ -17,13 +17,27 @@ type RootStackParamList = {
 export function Login(){
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [inputContent, setInputContent] = useState(false);
+    const [userNotFound, setUserNotFound] = useState(false);
+    const [loadingCircle, setLoadingCircle] = useState(false);
 
     const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+    
+    useEffect(() => {
+        if(!email || !password){
+            setInputContent(false);              
+        }else{
+            setInputContent(true); 
+        }
+    }, [email, password]);
+
 
     const { signIn } = useAuth();
 
     const handleLogin = async () => {
+        setLoadingCircle(true);
         try {
+
             const response = await authService.authenticate({
                 email: email,
                 password: password,
@@ -31,10 +45,16 @@ export function Login(){
 
             console.log(response.data);
 
-           await signIn({ email, password});  
-        } catch (error) {        
+           await signIn({email, password});  
+        } catch (error) {
+            setUserNotFound(true);
+            setTimeout(() => {
+                setUserNotFound(false);
+            }, 8000);    
             console.error("Erro", error);
         }
+
+        setLoadingCircle(false);
     };
     return(
         <Container>
@@ -57,7 +77,7 @@ export function Login(){
                             width={320} 
                             height={55} 
                             placeholder='Email'
-                            onChangeText={(e: string) => setEmail(e)}                         
+                            onChangeText={(e: string) => setEmail(e)}                        
                         />
                     </View>
 
@@ -71,13 +91,16 @@ export function Login(){
                             onChangeText={(p: string) => setPassword(p)}
                         />
                     </View>
+
+                    <ErrorMessage>{userNotFound ? 'Usuario inexistente!' : ''}</ErrorMessage>
                     
-                    <View style={{marginTop: 70, alignItems: 'center'}}>
+                    <View style={{marginTop: 60, alignItems: 'center', }}>
                         <CustomButton
-                        style={{marginBottom: 20, width: 300, height: 60}}
-                            title={'Login'}
+                            style={{marginBottom: 20, width: 300, height: 60}}
+                            title={loadingCircle ? <ActivityIndicator size={40} color="white" /> : 'Login'}
                             fontSize={20}
                             onPress={handleLogin}
+                            disabled={inputContent ? false : true}
                         />
 
                         <CustomButton

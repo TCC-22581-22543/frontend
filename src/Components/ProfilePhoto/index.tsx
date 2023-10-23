@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { TouchableOpacity, Image } from "react-native";
 import { DefaultImageContent, ProfileImageContainer } from "./styles";
-import { launchImageLibrary } from 'react-native-image-picker';
 
 export default function ProfilePhoto(){
     const [imageUri, setImageUri] = useState<string | null>(null);

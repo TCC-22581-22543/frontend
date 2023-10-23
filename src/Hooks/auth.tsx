@@ -40,7 +40,7 @@ const AuthContext = createContext({} as AuthContextData);
 
 function AuthProvider({children} : AuthProviderProps){
     const [userData, setUserData] = useState<User | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
+    const [loading, setLoading] = useState<boolean>(false);
 
 
     const signOut = useCallback(async () => {
@@ -60,34 +60,40 @@ function AuthProvider({children} : AuthProviderProps){
     }
 
     async function signIn({email, password}: SignInCredentials): Promise<User>{
-
-        const response = await authService.authenticate({email, password});
-
-        const auth = response.data;
-
-        await AsyncStorage.multiSet([
-            ['@TCC:token', auth.token],
-            ['@TCC:user', JSON.stringify(auth.user)],
-        ]);
-        
-
-        setUserData({
-            id: auth.user.id,
-            email: auth.user.email, 
-            name: auth.user.nome,  
-            token: auth.token  
-        });
-
-        api.interceptors.request.use((config) => {
-            if (config && config.headers) {
-               config.headers.Authorization = auth.token 
-            }
-            return config;
-        });
+   
+        try {
+            const response = await authService.authenticate({email, password});
+            const auth = response.data;
     
-        setLoading(false);
-        return auth;
+            if (auth.token && auth.user) {
+                await AsyncStorage.multiSet([
+                    ['@TCC:token', auth.token],
+                    ['@TCC:user', JSON.stringify(auth.user)],
+                ]);
+    
+                setUserData({
+                    id: auth.user.id,
+                    email: auth.user.email, 
+                    name: auth.user.nome,  
+                    token: auth.token  
+                });
+    
+                api.interceptors.request.use((config) => {
+                    if (config && config.headers) {
+                        config.headers.Authorization = auth.token 
+                    }
+                    return config;
+                });
+            }
+    
+            return auth;
+    
+        } catch (error) {
+            console.error("Erro durante signIn:", error);
+            throw error;
+        }
     }
+    
 
     async function register(registerData: RegisterData): Promise<User> {
         try {
