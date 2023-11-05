@@ -16,7 +16,7 @@ export const authService = {
 
     async userInfo(data: any){
         return await api.get(`/showUser/${data}`);
-    }
+    },
 }
 
 export default api;
