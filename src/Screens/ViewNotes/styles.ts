@@ -40,15 +40,30 @@ export const ContentText = styled.View`
     justify-content: center;
 `;
 
+export const GoBackView = styled.TouchableOpacity`
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 78%;
+    margin-top: 20px;
+`;
+
+export const NotesTitle = styled.Text`
+    color: white;
+    font-size: 26px;
+    font-family: 'Poppins_700Bold';
+    margin-bottom: 6px;
+`;
 
 export const ButtonAdd = styled.TouchableOpacity`
-  position: absolute;
-  width: 60px;
-  height: 60px;
+  position: absolute; 
   background-color: #007bff;
   border-radius: 30px;
   justify-content: center;
   align-items: center;
-  right: 20px;
-  bottom: 20px;
+  right: 60px;
+  bottom: 60px;
+`;
+
+export const NotesTextView = styled.View`
+    margin: 10px;
 `;

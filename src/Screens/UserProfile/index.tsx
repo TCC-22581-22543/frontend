@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { AccountDetailsText, Container, Content, GoBackView, InfoText, InfoText2, Informations, UserInfo } from './styles';
-import ProfilePhoto from '@assets/ProfilePhoto';
 import { AntDesign } from '@expo/vector-icons';
 import api, { authService } from '@utils/api';
 import { useAuth } from '@Hooks/auth';
+import ProfilePhoto from '@assets/ProfilePhoto';
 
 interface UserData{
     id: string;
