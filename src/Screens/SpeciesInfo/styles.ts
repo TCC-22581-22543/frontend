@@ -54,3 +54,8 @@ export const CientificName = styled.Text`
   font-family: 'Poppins_500Medium';
   font-style: italic
 `;
+export const GoBackView = styled.TouchableOpacity`
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 78%;
+`;

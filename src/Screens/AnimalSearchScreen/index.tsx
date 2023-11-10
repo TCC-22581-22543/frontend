@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { ScrollView, Text, View } from "react-native";
 import { Container, Content, GoBackView, InputView, CardView} from "./styles";
 import { Input } from '@assets/Input';
@@ -6,15 +6,43 @@ import { AntDesign } from '@expo/vector-icons';
 import { CustomButton } from "@assets/Button";
 import AnimalCard from "@assets/AnimalCard";
 import { useNavigation } from "@react-navigation/native";
+import api from '@utils/api';
+
+interface SpecieData {
+  _id: string;
+  nome_da_especie: string;
+  nome_cientifico: string;
+}
 
 export default function AnimalSearchScreen() {
     const navigation = useNavigation();
+    const [speciesList, setSpeciesList] = useState<SpecieData[]>([]);
+
+    useEffect(() => {
+        async function fetchSpecies() {
+          try {
+            const response = await api.get(`/species`);
+            const data = response.data;
+            
+            if (Array.isArray(data)) {
+              setSpeciesList(data);
+            } else {
+              console.error("A resposta da API não é um array:", data);
+            }
+          } catch (error) {
+            console.error("Erro ao buscar dados da API:", error);
+          }
+        }
+    
+        fetchSpecies();
+      }, []);
 
     return(
         <Container>
-            <GoBackView>
+            <GoBackView  onPress={() => navigation.navigate("Main" as never)}>
                 <AntDesign name="left" size={25} color={'white'}/>
                 <Text style={{color: 'white', fontSize: 15, marginTop: 2}}>Voltar</Text>
+                
             </GoBackView>
             <Content>
                 <InputView>
@@ -30,17 +58,31 @@ export default function AnimalSearchScreen() {
                     style={{width: 85, height: 50, marginLeft: '70%', marginTop: '5%'}}
                 />
 
-                <CardView>
-                    <ScrollView>
-                        <AnimalCard commonName={"Urso Pardo"} scientificName={"Cientific name"} onPress={() => navigation.navigate('Species' as never)}/>
-                        <AnimalCard commonName={"Urso Pardo"} scientificName={"Cientific name"}/>
-                        <AnimalCard commonName={"Urso Pardo"} scientificName={"Cientific name"}/>
-                        <AnimalCard commonName={"Urso Pardo"} scientificName={"Cientific name"}/>
-                        <AnimalCard commonName={"Urso Pardo"} scientificName={"Cientific name"}/>
-                        <AnimalCard commonName={"Urso Pardo"} scientificName={"Cientific name"}/>
-                    </ScrollView>
-                </CardView>
-            </Content>   
-        </Container>
-    )   
+<CardView>
+          <ScrollView>
+            {speciesList &&
+              speciesList.map((species, index) => (
+                <AnimalCard
+                  key={index}
+                  commonName={species.nome_da_especie}
+                  scientificName={species.nome_cientifico}
+                  onPress={() => navigation.navigate("Species" as never, {id: species._id})}
+                />
+              ))}
+          </ScrollView>
+        </CardView>
+      </Content>
+    </Container>
+  );
 }
+//Neste código, verificamos se data é um array antes de definir speciesList. Isso deve evitar o erro "speciesList.map is not a function". Certifique-se de também verificar a estrutura da resposta da API e, se necessário, ajustar o tratamento dos dados de acordo com a estrutura real.
+
+
+
+
+
+
+
+
+
+
