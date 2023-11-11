@@ -22,7 +22,7 @@ export default function AnimalSearchScreen() {
         async function fetchSpecies() {
           try {
             const response = await api.get(`/species`);
-            const data = response.data;
+            const data = response.data.especies;
             
             if (Array.isArray(data)) {
               setSpeciesList(data);

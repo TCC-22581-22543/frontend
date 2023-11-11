@@ -1,6 +1,6 @@
 import axios from 'axios'
 const api = axios.create({
-    baseURL: 'https://brindle-encouraging-crayfish.glitch.me'
+    baseURL: 'https://database-six-rho.vercel.app'
 });
 
 export const authService = {
