@@ -64,7 +64,7 @@ export default function AnimalSearchScreen() {
               speciesList.map((species, index) => (
                 <AnimalCard
                   key={index}
-                  commonName={species.nome_da_espécie}
+                  commonName={species.nome_da_especie}
                   scientificName={species.nome_cientifico}
                   onPress={() => navigation.navigate("Species" as never, {id: species._id})}
                 />

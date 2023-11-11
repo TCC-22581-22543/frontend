@@ -3,7 +3,7 @@ import theme from './src/global/styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { Text } from 'react-native';
 import { Main } from '@Screens/Main';
-import { Annotation } from "@Screens/Annotation";
+import { ViewNotes } from "@Screens/ViewNotes";
 
 import {
   useFonts,
@@ -14,6 +14,7 @@ import {
 
 import Routes from './src/Routes';
 import { AuthProvider } from './src/Hooks/auth';
+import { CreateNote } from '@Screens/CreateNote';
 
 export default function App() {
 
