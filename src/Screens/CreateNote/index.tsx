@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, KeyboardAvoidingView, ScrollView, View, TouchableOpacity } from 'react-native';
+import { Text, KeyboardAvoidingView, ScrollView, View, BackHandler, Alert } from 'react-native';
 import { Container, NoteInput, FinishButton, ViewNote, NoteTitle, NoteTitleContainer, TitleLine, GoBack} from './styles'
 import { AntDesign } from '@expo/vector-icons';
 import { authService } from '@utils/api';
@@ -42,6 +42,37 @@ export function CreateNote() {
         console.log("erro nas anotações: ", error);
       }
     };
+
+    useEffect(() => {
+      const backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+        if (titleNote || note) {
+
+          Alert.alert(
+            'Atenção',
+            'Alterações não salvas serão perdidas Deseja mesmo sair?',
+            [
+              {
+                text: 'Cancelar',
+                style: 'destructive',
+              },
+              {
+                text: 'Sair',
+                onPress: () => {
+                  navigation.goBack();
+                },
+              },
+            ],
+            { cancelable: true }
+          );
+          return true; 
+        } else {
+          navigation.goBack()
+          return false;
+        }
+      });
+  
+      return () => backHandler.remove(); 
+    }, [titleNote, note, navigation]);
   
     return (
         <KeyboardAvoidingView       
@@ -74,7 +105,7 @@ export function CreateNote() {
                     <AntDesign name="left" size={35} color={'white'} style={{marginTop: 12}}/>
                     <Text style={{color: 'white', fontSize: 26,  marginTop: 10}}>Voltar</Text>
                   </GoBack>
-                  <FinishButton onPress={handleFinish}>
+                  <FinishButton onPress={handleFinish} disabled={titleNote && note ? false : true}>
                       <Text style={{fontSize: 20, fontFamily: 'Poppins_700Bold', color: 'white'}}>Finalizar</Text>
                   </FinishButton>
                 </View>

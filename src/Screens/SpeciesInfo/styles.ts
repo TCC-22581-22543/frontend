@@ -52,8 +52,9 @@ export const AnimalName = styled.Text`
 export const CientificName = styled.Text`
   color: white;
   font-family: 'Poppins_500Medium';
-  font-style: italic
+  font-style: italic;
 `;
+
 export const GoBackView = styled.TouchableOpacity`
     flex-direction: row;
     justify-content: space-between;

@@ -60,9 +60,10 @@ export function Main(){
                             onPress={() => {navigation.navigate('Profile' as never)}}
                         />
                         <ButtonOptionsMenu 
-                            title='Próximo a você'
-                            description='Verifique as espécies presentes em sua região'
+                            title='Noticias'
+                            description={`Noticias sobre as mudanças climaticas`}
                             icon='globe-americas'
+                            onPress={() => {navigation.navigate('News' as never)}}
                         />
                     </View>
                 </ContentMenu>               

@@ -46,6 +46,10 @@ export const authService = {
         return await api.delete(`/deleteNotes/${id}`, {
             headers: { Authorization: `${token}`},
         });
+    },
+
+    async returnNews(){
+        return await api.get(`/news`);
     }
 }
 
