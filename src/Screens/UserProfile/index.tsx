@@ -5,6 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import api, { authService } from '@utils/api';
 import { useAuth } from '@Hooks/auth';
 import ProfilePhoto from '@assets/ProfilePhoto';
+import { useNavigation } from "@react-navigation/native";
 
 interface UserData{
     id: string;
@@ -13,6 +14,7 @@ interface UserData{
 }
 
 export default function UserProfile(){
+    const navigation = useNavigation();
 
     const [userInfos, setUserInfos] = useState<UserData>();
 
@@ -48,7 +50,7 @@ export default function UserProfile(){
         <Container>
             <Content>
 
-            <GoBackView>
+            <GoBackView  onPress={() => navigation.navigate("Main" as never)}>
                 <AntDesign name="left" size={25} color={'white'}/>
                 <Text style={{color: 'white', fontSize: 15, marginTop: 2}}>Voltar</Text>
             </GoBackView>

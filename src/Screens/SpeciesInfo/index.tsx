@@ -9,16 +9,17 @@ import {
   SpecieInfoView,
   SpecieTitle,
   ViewLine,
+  GoBackView,
+  GoNewSearchView,
 } from "./styles";
 import { Entypo } from "@expo/vector-icons";
 import api from "@utils/api";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
 
 /* 
 TODO
 - Fazer quebra de linha no AnimalName e CientificName
-- Preencher os dados (nome da especie, descrição, nome cientifico etc) fazendo requisições na API
-- Colocar botões de "Voltar" e "Fazer outra pesquisa" (pegar exemplo no Figma)
 */
 
 interface SpecieData {
@@ -33,6 +34,7 @@ interface SpecieData {
   situacao_atual: string;
 }
 export default function SpeciesInfo() {
+  const navigation = useNavigation();
   const [specieInfos, setSpecieInfos] = useState<SpecieData[]>([]);
   const route = useRoute();
   const { id } = route.params;
@@ -46,7 +48,7 @@ export default function SpeciesInfo() {
 
         setSpecieInfos({
           id: data._id,
-          nome: data.nome_da_espécie,
+          nome: data.nome_da_especie,
           nome_cientifico: data.nome_cientifico,
           classificacao: data.classificacao,
           tipo_alimentacao: data.tipo_alimentacao,
@@ -57,7 +59,7 @@ export default function SpeciesInfo() {
         });
 
         console.log(id);
-        console.log(specieInfos.image_url);
+        
       } catch (error) {
         console.error("Erro ao buscar dados da API:", error);
       }
@@ -68,13 +70,25 @@ export default function SpeciesInfo() {
   return (
     <Container>
       <ScrollView>
+      <View style={{ marginTop:2 ,marginRight:6,flexDirection: 'row', justifyContent: 'space-between'}}>
+          <GoBackView  onPress={() => navigation.navigate("Main" as never)}>
+                <AntDesign name="left" size={25} color={'white'}/>
+                <Text style={{color: 'white', fontSize: 15}}>Voltar</Text>
+          </GoBackView>
+          <GoNewSearchView onPress={() => navigation.navigate("Search" as never)}>
+              <FontAwesome name="search-plus" size={25} color="white" />
+              <Text style={{color: 'white', fontSize: 14}}>Nova Pesquisa</Text>
+          </GoNewSearchView>
+      </View>
         <SpecieInfoView>
           <DefaultImageContent>
-            <Entypo name="bug" size={86} />
+          
+          <Image source={{ uri: specieInfos.image_url }} style={{ width: 155, height: 170, borderRadius: 20}} />
+          
           </DefaultImageContent>
 
           <View style={{ marginTop: 45 }}>
-            <AnimalName>{specieInfos?.nome}</AnimalName>
+            <AnimalName >{specieInfos?.nome}</AnimalName>
             <CientificName>{specieInfos?.nome_cientifico}</CientificName>
             <Text style={{ color: "white" }}>
               Ambiente: {specieInfos?.bioma}

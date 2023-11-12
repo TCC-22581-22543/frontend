@@ -30,4 +30,3 @@ export const CardView = styled.View`
     margin: 40px 0 0 0;
     border-radius: 5px;
 `;
-
