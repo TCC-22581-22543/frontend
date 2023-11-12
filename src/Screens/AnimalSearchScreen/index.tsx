@@ -22,7 +22,7 @@ export default function AnimalSearchScreen() {
         async function fetchSpecies() {
           try {
             const response = await api.get(`/species`);
-            const data = response.data;
+            const data = response.data.especies;
             
             if (Array.isArray(data)) {
               setSpeciesList(data);
@@ -75,7 +75,6 @@ export default function AnimalSearchScreen() {
     </Container>
   );
 }
-//Neste código, verificamos se data é um array antes de definir speciesList. Isso deve evitar o erro "speciesList.map is not a function". Certifique-se de também verificar a estrutura da resposta da API e, se necessário, ajustar o tratamento dos dados de acordo com a estrutura real.
 
 
 

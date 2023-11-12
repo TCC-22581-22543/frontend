@@ -10,8 +10,17 @@ import {
   SpecieTitle,
   ViewLine,
 } from "./styles";
+import { Entypo } from "@expo/vector-icons";
 import api from '@utils/api';
 import { useRoute } from "@react-navigation/native";
+
+
+/* 
+TODO
+- Fazer quebra de linha no AnimalName e CientificName
+- Preencher os dados (nome da especie, descrição, nome cientifico etc) fazendo requisições na API
+- Colocar botões de "Voltar" e "Fazer outra pesquisa" (pegar exemplo no Figma)
+*/
 
 interface SpecieData {
   _id: string;
@@ -29,21 +38,29 @@ interface SpecieData {
 export default function SpeciesInfo() {
   const [specieInfo, setSpecieInfo] = useState<SpecieData | null>(null);
   const route = useRoute();
-  const { id } = route.params as any;
+  const { id } = route.params;
+
 
   useEffect(() => {
     async function fetchSpecie() {
       try {
-        const response = await api.get(`/species`);
-        const speciesArray = response.data;
+        const response = await api.get(`/species/${id}`);
+          const data = response.data;
 
-        const selectedSpecie = speciesArray.find((specie: SpecieData) => specie._id === id);
+          setSpecieInfos({
+            id: data._id,
+            nome: data.nome_da_espécie,
+            nome_cientifico: data.nome_cientifico,
+            classificacao: data.classificacao,
+            tipo_alimentacao: data.tipo_alimentacao,
+            bioma: data.bioma,
+            image_url: data.image_url,
+            evolucao: data.evolucao,
+            situacao_atual: data. situacao_atual,
 
-        if (selectedSpecie) {
-          setSpecieInfo(selectedSpecie);
-        } else {
-          console.error("Espécie não encontrada.");
-        }
+        });
+        
+        console.log(id);
       } catch (error) {
         console.error("Erro ao buscar dados da API:", error);
       }
@@ -65,15 +82,25 @@ export default function SpeciesInfo() {
           </DefaultImageContent>
 
           <View style={{ marginTop: 45 }}>
-            <AnimalName>{specieInfo.nome_da_espécie}</AnimalName>
-            <CientificName>{specieInfo.nome_cientifico}</CientificName>
-            <Text style={{ color: "white" }}>{specieInfo.bioma}</Text>
+            <AnimalName>nome da especie</AnimalName>
+            <CientificName>Nome Cientifico</CientificName>
+            <Text style={{ color: "white" }}>Ambiente</Text>
           </View>
         </SpecieInfoView>
         <ViewLine />
         <View>
           <SpecieTitle>Resumo</SpecieTitle>
-          <SpecieDescription>{specieInfo.situacao_atual}</SpecieDescription>
+          <SpecieDescription>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
+          </SpecieDescription>
         </View>
         <View
           style={{
@@ -85,7 +112,17 @@ export default function SpeciesInfo() {
         />
         <View>
           <SpecieTitle>O Futuro da Espécie</SpecieTitle>
-          <SpecieDescription style={{ color: "white" }}>{specieInfo.evolucao}</SpecieDescription>
+          <SpecieDescription style={{ color: "white" }}>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
+          </SpecieDescription>
         </View>
         <View style={{ height: 30 }} />
       </ScrollView>
