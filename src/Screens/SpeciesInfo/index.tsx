@@ -15,10 +15,13 @@ import {
 import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
 import api from "@utils/api";
 import { useRoute, useNavigation } from "@react-navigation/native";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
+
+
 
 interface SpecieData {
   _id: string;
-  nome_da_espécie: string;
+  nome_da_especie: string;
   nome_cientifico: string;
   classificacao: string;
   tipo_alimentacao: string;
@@ -30,7 +33,7 @@ interface SpecieData {
 
 
 export default function SpeciesInfo() {
-  const navigation = useNavigation();
+  const navigation = useNavigation;
   const [specieInfos, setSpecieInfos] = useState<SpecieData[]>([]);
   const route = useRoute();
   const { id } = route.params;
@@ -40,7 +43,8 @@ export default function SpeciesInfo() {
     async function fetchSpecie() {
       try {
         const response = await api.get(`/returnSpecieById/${id}`);
-          const data = response.data.specie;
+        const data = response.data.specie;
+        console.log(data);
 
         setSpecieInfos({
           nome_da_especie: data.nome_da_especie,
@@ -58,13 +62,7 @@ export default function SpeciesInfo() {
     }
 
     fetchSpecie();
-  }, [id]);
-
-  if (!specieInfos) {
-    return null;
-  }
-
-
+  }, []);
 
   return (
     <Container>
@@ -83,10 +81,11 @@ export default function SpeciesInfo() {
           <DefaultImageContent>
           <Image source={{ uri: specieInfos.image_url }} style={{ width: 155, height: 170, borderRadius: 20}} />
 
+
           </DefaultImageContent>
 
           <View style={{ marginTop: 45 }}>
-            <AnimalName>{specieInfos?.nome_da_especie}</AnimalName>
+            <AnimalName >{specieInfos?.nome_da_especie}</AnimalName>
             <CientificName>{specieInfos?.nome_cientifico}</CientificName>
             <Text style={{ color: "white" }}>
               Ambiente: {specieInfos?.bioma}
