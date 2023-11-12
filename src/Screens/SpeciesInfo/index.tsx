@@ -15,7 +15,6 @@ import {
 import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
 import api from "@utils/api";
 import { useRoute, useNavigation } from "@react-navigation/native";
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
 
 
 
