@@ -109,6 +109,7 @@ export default function AnimalSearchScreen() {
 
         <CardView>
           <ScrollView>
+
             {filteredSpecies.map((species, index) => (
               <AnimalCard
                 key={index}
@@ -119,6 +120,7 @@ export default function AnimalSearchScreen() {
                 }
               />
             ))}
+
           </ScrollView>
         </CardView>
       </Content>

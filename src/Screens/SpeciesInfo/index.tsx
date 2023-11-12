@@ -12,19 +12,13 @@ import {
   GoBackView,
   GoNewSearchView,
 } from "./styles";
-import { Entypo } from "@expo/vector-icons";
+import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
 import api from "@utils/api";
-import { useRoute, useNavigation } from "@react-navigation/native";
-import { AntDesign, FontAwesome } from "@expo/vector-icons";
-
-/* 
-TODO
-- Fazer quebra de linha no AnimalName e CientificName
-*/
+import { useRoute } from "@react-navigation/native";
 
 interface SpecieData {
   _id: string;
-  nome_da_especie: string;
+  nome_da_espécie: string;
   nome_cientifico: string;
   classificacao: string;
   tipo_alimentacao: string;
@@ -33,22 +27,23 @@ interface SpecieData {
   evolucao: string;
   situacao_atual: string;
 }
+
+
 export default function SpeciesInfo() {
-  const navigation = useNavigation();
   const [specieInfos, setSpecieInfos] = useState<SpecieData[]>([]);
   const route = useRoute();
   const { id } = route.params;
 
+
   useEffect(() => {
     async function fetchSpecie() {
       try {
-        const response = await api.get(`/returnSpecieById/${id}`);
-        const data = response.data.specie;
-        console.log(data);
+        const response = await api.get(`/species/${id}`);
+          const data = response.data;
 
         setSpecieInfos({
           id: data._id,
-          nome: data.nome_da_especie,
+          nome: data.nome_da_espécie,
           nome_cientifico: data.nome_cientifico,
           classificacao: data.classificacao,
           tipo_alimentacao: data.tipo_alimentacao,
@@ -57,15 +52,20 @@ export default function SpeciesInfo() {
           evolucao: data.evolucao,
           situacao_atual: data.situacao_atual,
         });
-
-        console.log(id);
         
+        console.log(id);
+        console.log(specieInfos.image_url);
       } catch (error) {
         console.error("Erro ao buscar dados da API:", error);
       }
     }
+
     fetchSpecie();
-  }, []);
+  }, [id]);
+
+  if (!specieInfo) {
+    return null;
+  }
 
   return (
     <Container>
@@ -82,13 +82,11 @@ export default function SpeciesInfo() {
       </View>
         <SpecieInfoView>
           <DefaultImageContent>
-          
-          <Image source={{ uri: specieInfos.image_url }} style={{ width: 155, height: 170, borderRadius: 20}} />
-          
+            <Entypo name="bug" size={86} />
           </DefaultImageContent>
 
           <View style={{ marginTop: 45 }}>
-            <AnimalName >{specieInfos?.nome}</AnimalName>
+            <AnimalName>{specieInfos?.nome}</AnimalName>
             <CientificName>{specieInfos?.nome_cientifico}</CientificName>
             <Text style={{ color: "white" }}>
               Ambiente: {specieInfos?.bioma}
@@ -104,7 +102,17 @@ export default function SpeciesInfo() {
         <ViewLine />
         <View>
           <SpecieTitle>Resumo</SpecieTitle>
-          <SpecieDescription>{specieInfos?.situacao_atual}</SpecieDescription>
+          <SpecieDescription>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
+          </SpecieDescription>
         </View>
         <View
           style={{
@@ -117,7 +125,15 @@ export default function SpeciesInfo() {
         <View>
           <SpecieTitle>O Futuro da Espécie</SpecieTitle>
           <SpecieDescription style={{ color: "white" }}>
-            {specieInfos?.evolucao}
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages,
+            and more recently with desktop publishing software like Aldus
+            PageMaker including versions of Lorem Ipsum
           </SpecieDescription>
         </View>
         <View style={{ height: 30 }} />

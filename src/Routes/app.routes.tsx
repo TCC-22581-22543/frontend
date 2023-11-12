@@ -9,6 +9,7 @@ import { ViewNotes } from '@Screens/ViewNotes';
 import AnimalSearchScreen from '@Screens/AnimalSearchScreen';
 import SpeciesInfo from '@Screens/SpeciesInfo';
 import { CreateNote } from '@Screens/CreateNote';
+import { News } from '@Screens/News';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,5 +34,6 @@ export const PrivateRoutes: React.FC = () => (
     <Stack.Screen name='Search' component={AnimalSearchScreen} />
     <Stack.Screen name='Species' component={SpeciesInfo} />
     <Stack.Screen name='CreateNote' component={CreateNote} />
+    <Stack.Screen name='News' component={News} />
   </Stack.Navigator>
 );
