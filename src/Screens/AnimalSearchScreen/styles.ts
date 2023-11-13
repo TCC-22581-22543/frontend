@@ -25,8 +25,7 @@ export const GoBackView = styled.TouchableOpacity`
 
 export const CardView = styled.View`
     flex: 1;
-    border-color: white; 
-    border-width: 0.5px; 
+     
     margin: 40px 0 0 0;
     border-radius: 5px;
 `;

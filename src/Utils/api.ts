@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 const api = axios.create({
-    baseURL: 'https://database-six-rho.vercel.app'
+    baseURL: 'https://database-six-rho.vercel.app/'
 });
 
 //'https://database-six-rho.vercel.app/'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Text, KeyboardAvoidingView, ScrollView, View, BackHandler, Alert } from 'react-native';
+import { Text, TouchableWithoutFeedback, ScrollView, View, BackHandler, Alert } from 'react-native';
 import { Container, NoteInput, FinishButton, ViewNote, NoteTitle, NoteTitleContainer, TitleLine, GoBack} from './styles'
 import { AntDesign } from '@expo/vector-icons';
 import { authService } from '@utils/api';
@@ -75,10 +75,10 @@ export function CreateNote() {
     }, [titleNote, note, navigation]);
   
     return (
-        <KeyboardAvoidingView       
+        <TouchableWithoutFeedback       
           style={{ flex: 1 }}
         >
-          <ScrollView contentContainerStyle={{ flex: 1 }}>
+          <ScrollView contentContainerStyle={{ flex: 1 }} keyboardShouldPersistTaps='handled'>
             <Container>
                 <ViewNote>
                 <NoteTitleContainer>                 
@@ -101,7 +101,7 @@ export function CreateNote() {
                 />                    
                 </ViewNote>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-                  <GoBack>
+                  <GoBack onPress={() => navigation.goBack()}>
                     <AntDesign name="left" size={35} color={'white'} style={{marginTop: 12}}/>
                     <Text style={{color: 'white', fontSize: 26,  marginTop: 10}}>Voltar</Text>
                   </GoBack>
@@ -111,6 +111,6 @@ export function CreateNote() {
                 </View>
             </Container>
           </ScrollView>
-        </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
     );
 }

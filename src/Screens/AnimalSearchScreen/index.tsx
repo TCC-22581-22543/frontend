@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import { ScrollView, Text, View } from "react-native";
+import React, {useState, useEffect, ReactDOM} from "react";
+import { ScrollView, Text } from "react-native";
 import { Container, Content, GoBackView, InputView, CardView} from "./styles";
 import { Input } from '@assets/Input';
 import { AntDesign } from '@expo/vector-icons';
@@ -12,10 +12,11 @@ interface SpecieData {
   _id: string;
   nome_da_especie: string;
   nome_cientifico: string;
+  navigate: any;
 }
 
 export default function AnimalSearchScreen() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<SpecieData>();
     const [speciesList, setSpeciesList] = useState<SpecieData[]>([]);
 
     useEffect(() => {
@@ -23,12 +24,9 @@ export default function AnimalSearchScreen() {
           try {
             const response = await api.get(`/species`);
             const data = response.data.especies;
+                      
+            setSpeciesList(data);
             
-            if (Array.isArray(data)) {
-              setSpeciesList(data);
-            } else {
-              console.error("A resposta da API não é um array:", data);
-            }
           } catch (error) {
             console.error("Erro ao buscar dados da API:", error);
           }
@@ -58,13 +56,13 @@ export default function AnimalSearchScreen() {
                     style={{width: 85, height: 50, marginLeft: '70%', marginTop: '5%'}}
                 />
 
-<CardView>
+        <CardView>
           <ScrollView>
             {speciesList &&
               speciesList.map((species, index) => (
                 <AnimalCard
                   key={index}
-                  commonName={species.nome_da_espécie}
+                  commonName={species.nome_da_especie}
                   scientificName={species.nome_cientifico}
                   onPress={() => navigation.navigate("Species" as never, {id: species._id})}
                 />

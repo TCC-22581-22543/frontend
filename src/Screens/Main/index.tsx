@@ -11,6 +11,7 @@ export function Main(){
 
     const { signOut } = useAuth();
     const navigation = useNavigation();
+    const { user } = useAuth();
 
     return(
        
@@ -33,7 +34,7 @@ export function Main(){
                 </View>
             <Content>
                 <View style={{marginRight: 40, marginBottom: 20}}>
-                    <Title>Bem Vindo(a), usuário!</Title>
+                    <Title>Bem Vindo(a), {user?.name}!</Title>
                     <Description>Aqui você já pode começar a navegar pelo simulador e encontrar o que precisa!</Description>
                 </View>
                 <ContentMenu>

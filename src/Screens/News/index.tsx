@@ -23,7 +23,6 @@ export function News(){
             try {
                 const { data } = await authService.returnNews();
                 setNewsInfo(data);
-                console.log(newsInfo);
             } catch (error) {
                 console.log(error)
             }
@@ -33,24 +32,25 @@ export function News(){
 
     return(
         <Container>
+
             <View style={{margin: 20, marginTop: 60}}>
                 <TitleScreen>Noticias</TitleScreen>
                 <Description>Confira aqui algumas das principais noticias sobre as mudanças climaticas e a fauna</Description>
             </View>
-
             <View>
-            <FlatList 
-                data={newsInfo}
-                renderItem={({ item }) => (
-                    <NewsCard
-                        key={item.id}
-                        title={item.titulo}
-                        description={item.descricao}
-                        link={item.link}
-                        image={item.imagem}
-                        onPress={() => Linking.openURL(item.link)}                        
-                    />
-                )}
+                <FlatList
+                    style={{ marginBottom: 190 }}
+                    data={newsInfo}
+                    renderItem={({ item }) => (
+                        <NewsCard
+                            key={String(item.id)}
+                            title={item.titulo}
+                            description={item.descricao}
+                            link={item.link}
+                            image={item.imagem}
+                            onPress={() => Linking.openURL(item.link)}                                          
+                        />                   
+                    )}
                 />
             </View>
         </Container>
