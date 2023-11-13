@@ -39,8 +39,7 @@ export default function AnimalSearchScreen() {
         <Container>
             <GoBackView  onPress={() => navigation.navigate("Main" as never)}>
                 <AntDesign name="left" size={25} color={'white'}/>
-                <Text style={{color: 'white', fontSize: 15, marginTop: 2}}>Voltar</Text>
-                
+                <Text style={{color: 'white', fontSize: 15, marginTop: 2}}>Voltar</Text>             
             </GoBackView>
             <Content>
                 <InputView>
@@ -52,10 +51,9 @@ export default function AnimalSearchScreen() {
                     />
                 </InputView>
                 <CustomButton 
-                    title="Filtrar" 
-                    style={{width: 85, height: 50, marginLeft: '70%', marginTop: '5%'}}
+                  title="Filtrar" 
+                  style={{width: 85, height: 50, marginLeft: '70%', marginTop: '5%'}}
                 />
-
         <CardView>
           <ScrollView>
             {speciesList &&
