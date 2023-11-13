@@ -40,7 +40,7 @@ const AuthContext = createContext({} as AuthContextData);
 
 function AuthProvider({children} : AuthProviderProps){
     const [userData, setUserData] = useState<User | null>(null);
-    const [loading, setLoading] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
 
 
     const signOut = useCallback(async () => {
@@ -60,7 +60,7 @@ function AuthProvider({children} : AuthProviderProps){
     }
 
     async function signIn({email, password}: SignInCredentials): Promise<User>{
-   
+        
         try {
             const response = await authService.authenticate({email, password});
             const auth = response.data;
@@ -85,7 +85,8 @@ function AuthProvider({children} : AuthProviderProps){
                     return config;
                 });
             }
-    
+            
+            setLoading(false);
             return auth;
     
         } catch (error) {
@@ -125,7 +126,6 @@ function AuthProvider({children} : AuthProviderProps){
       
           
                 if (!token[1] || !user[1]) {
-                    setLoading(false);
                     return;
                 };          
                 
@@ -162,11 +162,11 @@ function AuthProvider({children} : AuthProviderProps){
 
             } catch (error) {
                 console.log(error);
+                setLoading(false);
             }   
-        }
-        
-        loadStoragedData();
-          
+        }  
+        setLoading(false);
+        loadStoragedData();      
     }, [signOut]);
 
     

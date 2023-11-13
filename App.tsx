@@ -1,9 +1,6 @@
-import { Login } from '@Screens/Login'; // fazer importação de telas dessa maneria "@Pasta/arquivo"
 import theme from './src/global/styles/theme';
 import { ThemeProvider } from 'styled-components';
 import { Text } from 'react-native';
-import { Main } from '@Screens/Main';
-import { ViewNotes } from "@Screens/ViewNotes";
 
 import {
   useFonts,
@@ -14,7 +11,6 @@ import {
 
 import Routes from './src/Routes';
 import { AuthProvider } from './src/Hooks/auth';
-import { CreateNote } from '@Screens/CreateNote';
 
 export default function App() {
 
@@ -25,7 +21,7 @@ export default function App() {
   });
 
   if (!fontsLoaded && !fontError) {
-    return <Text>Carregando...</Text>;
+    return <Text>...</Text>
   }
 
   return (

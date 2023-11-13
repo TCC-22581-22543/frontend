@@ -1,7 +1,7 @@
 
 import axios from 'axios'
 const api = axios.create({
-    baseURL: 'https://database-six-rho.vercel.app/'
+    baseURL: 'https://database-six-rho.vercel.app'
 });
 
 //'https://database-six-rho.vercel.app/'
@@ -34,6 +34,12 @@ export const authService = {
         });
     },
 
+    async returnAnotationsCount(token: any){
+        return await api.get('/countUserAnotations',{
+            headers: { Authorization: `${token}`}
+        })
+    },
+
     async updateNotes(token: any, id: any, title: string, text: string){
         const data = { title: title, text: text };
 
@@ -46,6 +52,10 @@ export const authService = {
         return await api.delete(`/deleteNotes/${id}`, {
             headers: { Authorization: `${token}`},
         });
+    },
+
+    async deleteAccount(id: any){
+        return await api.delete(`/deleteUser/${id}`);
     },
 
     async returnNews(){

@@ -31,6 +31,7 @@ export const InfoText2 = styled.Text`
     font-family: 'Poppins_400Regular';
     font-size: 15px;
     color: #fff;
+    margin-top: 4px;
 `;
 
 export const GoBackView = styled.TouchableOpacity`
