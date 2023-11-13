@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, Image } from "react-native";
+import { View, Text, ScrollView, Image, Platform } from "react-native";
 import React, { useEffect, useState } from "react";
 import {
   AnimalName,
@@ -10,12 +10,14 @@ import {
   SpecieTitle,
   ViewLine,
 } from "./styles";
-import api from '@utils/api';
+import api from "@utils/api";
 import { useRoute } from "@react-navigation/native";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 
 interface SpecieData {
   _id: string;
-  nome_da_espécie: string;
+  nome_da_especie: string;
   nome_cientifico: string;
   classificacao: string;
   tipo_alimentacao: string;
@@ -61,11 +63,11 @@ export default function SpeciesInfo() {
       <ScrollView>
         <SpecieInfoView>
           <DefaultImageContent>
-          <Image source={{ uri: specieInfo.image_url }} style={{ width: 155, height: 170, borderRadius: 20}} />
+            <Image source={{ uri: specieInfo.image_url }} style={{ width: 155, height: 170, borderRadius: 20 }} />
           </DefaultImageContent>
 
           <View style={{ marginTop: 45 }}>
-            <AnimalName>{specieInfo.nome_da_espécie}</AnimalName>
+            <AnimalName>{specieInfo.nome_da_especie}</AnimalName>
             <CientificName>{specieInfo.nome_cientifico}</CientificName>
             <Text style={{ color: "white" }}>{specieInfo.bioma}</Text>
           </View>

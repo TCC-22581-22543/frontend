@@ -11,10 +11,12 @@ export const Container = styled.SafeAreaView`
 export const Content = styled.View`
     flex: 1;
     margin: 24px;
+    margin-top: 5px;
 `;
 
 export const InputView = styled.View`
     align-items: center;
+    margin-bottom: 14px;
 `;
 
 export const GoBackView = styled.TouchableOpacity`
@@ -26,6 +28,6 @@ export const GoBackView = styled.TouchableOpacity`
 export const CardView = styled.View`
     flex: 1; 
     margin: 40px 0 0 0;
+    margin-top: 20px;
     border-radius: 5px;
 `;
-

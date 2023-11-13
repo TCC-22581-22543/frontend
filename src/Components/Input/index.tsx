@@ -7,19 +7,23 @@ interface InputProps {
     placeholder?: string;
     value?: string;
     mask?: boolean
+    colorPlaceholder?: string;
+    colorText?: string;
     onChangeText?: (text: string) => void;
 }
 
-export function Input({ width, height, placeholder, value, mask, onChangeText, ...rest}: InputProps) {
+export function Input({ width, height, placeholder, value, mask, colorPlaceholder, onChangeText, colorText, ...rest}: InputProps) {
     return (
         <StyledInput
-        width={width}
-        height={height}
-        placeholder={placeholder}
-        value={value}
-        onChangeText={onChangeText}
-        secureTextEntry={mask}
-        {...rest}
+            width={width}
+            height={height}
+            placeholder={placeholder}
+            value={value}
+            onChangeText={onChangeText}
+            secureTextEntry={mask}
+            style={{color: colorText}}
+            placeholderTextColor={colorPlaceholder}
+            {...rest}
         />
     );
 }

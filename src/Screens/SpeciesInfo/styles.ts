@@ -6,6 +6,16 @@ export const Container = styled.SafeAreaView`
   padding-top: 32px;
 `;
 
+export const GoBackView = styled.TouchableOpacity`
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const GoNewSearchView = styled.TouchableOpacity`
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
 export const DefaultImageContent = styled.View`
   width: 155px;
   height: 170px;
@@ -53,10 +63,4 @@ export const CientificName = styled.Text`
   color: white;
   font-family: 'Poppins_500Medium';
   font-style: italic;
-`;
-
-export const GoBackView = styled.TouchableOpacity`
-    flex-direction: row;
-    justify-content: space-between;
-    margin-right: 78%;
 `;
