@@ -1,4 +1,4 @@
-Projeto
+
 O projeto se baseia em uma aplicação que exibe informações sobre o futuro biológico das espécies baseado nas mudanças climáticas a longo prazo. 
 O aplicativo permite que o usuário realize estudos a partir de dados de diversas espécies, com o intuito de divulgar e alertar sobre as mudanças climáticas.
 
